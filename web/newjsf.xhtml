@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/
+    DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Example App</title>
+    </h:head>
+    <h:body>
+        Primeface Example App.
+        <br />
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+        <br/>
+        <h:form>
+            <h:inputText id="firstNameType" value="#{helloJsfController.freeText}">
+                <f:ajax execute="@this" event="keyup" listener="#{helloJsfController.displayText}" render="messages"/>
+            </h:inputText>
+            <p:messages id="messages"/>
+            <br/>
+            <p:panelGrid columns="2" style="width: 100%">
+                <p:outputLabel for="firstName" value="First: "/>
+                <p:inputText id="firstName" value="#{helloJsfController.user.firstName}"/>
+                <p:outputLabel for="lastName" value="Last: " />
+                <p:inputText id="lastName" value="#{helloJsfController.user.lastName}"/>
+                <p:outputLabel for="email" value="Email: " />
+                <p:inputText id="email" value="#{helloJsfController.user.email}"/>
+            </p:panelGrid>
+            <br/>
+            <p:commandButton id="submitUser" value="Submit" action="#{helloJsfController.createUser()}" update="messages, helloUsers"/>
+            <br/>
+            <p:dataTable id="helloUsers" var="user" value="#{helloJsfController.helloUserList}">
+                <p:column headerText="First Name">
+                    <h:outputText value="#{user.firstName}"/>
+                </p:column>
+                <p:column headerText="Last Name">
+                    <h:outputText value="#{user.lastName}"/>
+                </p:column>
+                <p:column headerText="Email">
+                    <h:outputText value="#{user.email}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>

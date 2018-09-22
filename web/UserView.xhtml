@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>User View</title>
+    </h:head>
+    <h:body>
+        <h2>Simple Java Server Faces Application Development </h2>
+        <p>Java web application development is a lot fun with netbeans ide .</p>
+        <p>You can try developing application with java today </p>
+        <br />
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+        <h:form>
+            <p:messages id="messages"/>
+            <br/>
+            <p:outputLabel for="firstName" value="First: "/>
+            <p:inputText id="firstName" value="#{model.user.firtName}"/>
+            <br/>
+            <p:outputLabel for="lastName" value="Last: " />
+            <p:inputText id="lastName" value="#{model.user.lastName}"/>
+            <br/>
+            <p:outputLabel for="email" value="Email: " />
+            <p:inputText id="email" value="#{model.user.emailAddress}"/>
+            <br/><br/>
+            <p:commandButton id="submitUser" value="Submit" ajax="false" action="#{model.user.createNewUser()}"/>
+
+        </h:form>
+    </h:body>
+</html>
+
